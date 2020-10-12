@@ -22,10 +22,24 @@ Partial Class DrawWithMouseForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
+        Me.ColorDialog = New System.Windows.Forms.ColorDialog()
+        Me.SuspendLayout()
+        '
+        'ColorDialog
+        '
+        Me.ColorDialog.AnyColor = True
+        Me.ColorDialog.Tag = "This is a Tag"
+        '
+        'DrawWithMouseForm
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Name = "DrawWithMouseForm"
         Me.Text = "Form1"
+        Me.ResumeLayout(False)
+
     End Sub
 
+    Private WithEvents ColorDialog As ColorDialog
 End Class
