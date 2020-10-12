@@ -4,7 +4,8 @@
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click
         'DrawLine()
         'DrawCircle()
-        DrawRectangle()
+        'DrawRectangle()
+        DrawString()
     End Sub
 
     Sub DrawLine()
@@ -29,9 +30,26 @@
         Dim pen As New Pen(Color.Red)
         g.FillRectangle(aBrush, 20, 20, 100, 100)
         g.DrawRectangle(pen, 20, 20, 100, 100)
+        aBrush.Dispose()
         pen.Dispose()
         g.Dispose()
     End Sub
 
+    Public Sub DrawString()
+        Dim drawString As String = "Sample Text"
+        Dim x As Single = 150.0
+        Dim y As Single = 50.0
+
+        Dim g As Graphics = Me.CreateGraphics()
+        Dim drawFont As New Font("Arial", 16)
+        Dim drawBrush As New SolidBrush(Color.Black)
+        Dim drawFormat As New StringFormat '???
+
+        g.DrawString(drawString, drawFont, drawBrush, x, y, drawFormat)
+
+        drawFont.Dispose()
+        drawBrush.Dispose()
+        g.Dispose()
+    End Sub
 
 End Class
