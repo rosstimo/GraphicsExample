@@ -5,8 +5,11 @@
         'DrawLine()
         'DrawCircle()
         'DrawRectangle()
-        DrawString()
+        'DrawString()
     End Sub
+
+
+
 
     Sub DrawLine()
         Dim g As Graphics = Me.CreateGraphics
@@ -52,4 +55,15 @@
         g.Dispose()
     End Sub
 
+    Private Sub GraphicsForm_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+        'DrawLine()
+        Dim g As Graphics = Me.CreateGraphics
+        Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
+        g.Clear(Me.BackColor)
+        g.DrawLine(pen, 0, 0, Me.Width \ 2, Me.Height \ 2)
+        pen.Dispose()
+        g.Dispose()
+
+        e.Graphics.
+    End Sub
 End Class
