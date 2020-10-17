@@ -64,6 +64,6 @@
         pen.Dispose()
         g.Dispose()
 
-        e.Graphics.
+        'e.Graphics.
     End Sub
 End Class
