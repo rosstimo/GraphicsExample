@@ -26,28 +26,44 @@ Current Offset: {e.Graphics.PixelOffsetMode}"
         drawBrush.Dispose()
     End Sub
 
-    Sub update() Handles UpdateTabPage.Click
+    Sub update() Handles UpdateTabPage.Click, XOffsetTrackBar.ValueChanged, XScaleTrackBar.ValueChanged,
+                        YOffsetTrackBar.ValueChanged, YScaleTrackBar.ValueChanged, RotateTrackBar.ValueChanged,
+                        LocationTrackBar.ValueChanged
         Dim loc As Point
+        loc.X = LocationTrackBar.Value
+        loc.Y = loc.X
         Dim loc2 As Point
         loc2.X = UpdateTabPage.Width \ 2
         loc2.Y = UpdateTabPage.Height \ 2
+        Dim xScale As Single = CSng(XScaleTrackBar.Value * 0.1)
+        Dim yScale As Single = CSng(YScaleTrackBar.Value * 0.1)
         Dim g As Graphics = UpdateTabPage.CreateGraphics()
-        g.PageUnit = GraphicsUnit.Millimeter
-        g.ScaleTransform(2, 2)
-        g.TranslateTransform(10, 10)
-        g.RotateTransform(20)
-        g.RenderingOrigin = loc2
-        g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighSpeed
-        Dim infoString As String =
-            $"Current Unit: {g.PageUnit}
-Current Location: ({loc.X},{loc.Y})
-Current Size: ({PaintEventTabPage.Width},{PaintEventTabPage.Height})
-Current Scale: {g.PageScale}
-Current Origin: {g.RenderingOrigin}
-Current Offset: {g.PixelOffsetMode}"
+        Try
+            g.Clear(Me.BackColor)
+            g.PageUnit = GraphicsUnit.Millimeter
 
-        DrawText(g, loc, infoString)
+            g.ScaleTransform(xScale, yScale)
+            g.TranslateTransform(XOffsetTrackBar.Value, YOffsetTrackBar.Value)
+            g.RotateTransform(RotateTrackBar.Value)
+            g.RenderingOrigin = loc2
+            g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighSpeed
+            Dim infoString As String =
+    $"Current Unit: {g.PageUnit}
+Current Location: ({loc.X},{loc.Y})
+Current Offset: ({XOffsetTrackBar.Value},{YOffsetTrackBar.Value})
+Current Size: ({UpdateTabPage.Width},{UpdateTabPage.Height})
+Current Page Scale: {g.PageScale}
+Current X Scale: {xScale}
+Current Y Scale: {yScale}
+Current Rotation: {RotateTrackBar.Value}"
+
+            DrawText(g, loc, infoString)
+        Catch
+        End Try
         g.Dispose()
     End Sub
+
+
+
 
 End Class
