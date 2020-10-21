@@ -1,8 +1,12 @@
-﻿Public Class GraphicsForm
+﻿
+Imports System.Math 'make math functions work
+
+Public Class GraphicsForm
 
 
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click
-        'DrawLine()
+        DrawSinWave()
+        DrawLine()
         'DrawCircle()
         'DrawRectangle()
         'DrawString()
@@ -15,6 +19,14 @@
         Dim g As Graphics = Me.CreateGraphics
         Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
         g.DrawLine(pen, 0, 0, 150, 50)
+        pen.Dispose()
+        g.Dispose()
+    End Sub
+
+    Sub DrawLine(x1 As Integer, x2 As Integer, y1 As Integer, y2 As Integer)
+        Dim g As Graphics = Me.CreateGraphics
+        Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
+        g.DrawLine(pen, x1, y1, x1, y1)
         pen.Dispose()
         g.Dispose()
     End Sub
@@ -66,4 +78,30 @@
 
         'e.Graphics.
     End Sub
+
+    Sub DrawSinWave()
+        'vi = vp * sin(w*t+theta)+DC
+        'w = 2 * PI * f
+        'w = 360 * f
+        Dim theta As Integer = 90I
+        Dim vi As Double
+        Dim vp As Integer = CInt(Me.Height / 2)
+        Dim oldVi As Double = Me.Height / 2
+        Dim oldTheta As Integer
+
+        For theta = 0 To 360 Step 1
+
+            vi = vp * Sin((PI / 180) * theta)
+            'Console.WriteLine(vi)
+
+            DrawLine(theta, oldTheta, CInt(vi), CInt(oldVi))
+            oldTheta = theta
+            oldVi = vi
+
+        Next
+
+
+    End Sub
+
+
 End Class
