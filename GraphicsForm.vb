@@ -4,9 +4,10 @@ Imports System.Math 'make math functions work
 Public Class GraphicsForm
 
 
-    Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click
+    Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click, DisplayPictureBox.Click
+        'test()
         DrawSinWave()
-        DrawLine()
+        'DrawLine()
         'DrawCircle()
         'DrawRectangle()
         'DrawString()
@@ -24,9 +25,9 @@ Public Class GraphicsForm
     End Sub
 
     Sub DrawLine(x1 As Integer, x2 As Integer, y1 As Integer, y2 As Integer)
-        Dim g As Graphics = Me.CreateGraphics
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics
         Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
-        g.DrawLine(pen, x1, y1, x1, y1)
+        g.DrawLine(pen, x1, y1, x2, y2)
         pen.Dispose()
         g.Dispose()
     End Sub
@@ -67,7 +68,7 @@ Public Class GraphicsForm
         g.Dispose()
     End Sub
 
-    Private Sub GraphicsForm_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+    Private Sub GraphicsForm_Paint(sender As Object, e As PaintEventArgs) ' Handles Me.Paint
         'DrawLine()
         Dim g As Graphics = Me.CreateGraphics
         Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
@@ -83,15 +84,20 @@ Public Class GraphicsForm
         'vi = vp * sin(w*t+theta)+DC
         'w = 2 * PI * f
         'w = 360 * f
+        Me.Width = 1000
+        DisplayPictureBox.Width = 720
         Dim theta As Integer = 90I
         Dim vi As Double
-        Dim vp As Integer = CInt(Me.Height / 2)
-        Dim oldVi As Double = Me.Height / 2
+        Dim vp As Double = (DisplayPictureBox.Height / 2) * -1
+        Dim oldVi As Double = DisplayPictureBox.Height / 2
         Dim oldTheta As Integer
+        Dim pixelsPerDegree As Double = DisplayPictureBox.Width / 360
+        'DisplayPictureBox.Image = Nothing
+        Dim numberOfSteps As Double = DisplayPictureBox.Width / pixelsPerDegree
 
-        For theta = 0 To 360 Step 1
+        For theta = 0 To CInt(numberOfSteps) Step CInt(pixelsPerDegree)
 
-            vi = vp * Sin((PI / 180) * theta)
+            vi = vp * Sin((PI / 180) * theta) + (DisplayPictureBox.Height / 2)
             'Console.WriteLine(vi)
 
             DrawLine(theta, oldTheta, CInt(vi), CInt(oldVi))
@@ -104,4 +110,18 @@ Public Class GraphicsForm
     End Sub
 
 
+    Sub test()
+        Dim yMiddle As Integer = Me.Height \ 2
+        Dim xOneFourth As Integer = Me.Width \ 4
+        Dim xMiddle As Integer = Me.Width \ 2
+        Dim xThreeFourth As Integer = xOneFourth + xMiddle
+
+        DrawLine(0, xOneFourth, yMiddle, yMiddle)
+
+
+    End Sub
+
+    Private Sub GraphicsForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        DisplayPictureBox.BackColor = Color.LightBlue
+    End Sub
 End Class

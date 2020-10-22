@@ -22,17 +22,34 @@ Partial Class GraphicsForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.DisplayPictureBox = New System.Windows.Forms.PictureBox()
+        CType(Me.DisplayPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'DisplayPictureBox
+        '
+        Me.DisplayPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DisplayPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.DisplayPictureBox.Name = "DisplayPictureBox"
+        Me.DisplayPictureBox.Size = New System.Drawing.Size(852, 564)
+        Me.DisplayPictureBox.TabIndex = 0
+        Me.DisplayPictureBox.TabStop = False
         '
         'GraphicsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.ClientSize = New System.Drawing.Size(852, 564)
+        Me.Controls.Add(Me.DisplayPictureBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "GraphicsForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
+        CType(Me.DisplayPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents DisplayPictureBox As PictureBox
 End Class
