@@ -9,6 +9,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GraphicsMouseEvents", "Grap
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GDIParms", "GDIParms\GDIParms.vbproj", "{FBC1790A-57F3-48C2-9CA8-0047F0FB1848}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrawWaves", "DrawWaves\DrawWaves.vbproj", "{4B49A3DE-539B-4B88-B20A-EB4EC2717241}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FBC1790A-57F3-48C2-9CA8-0047F0FB1848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC1790A-57F3-48C2-9CA8-0047F0FB1848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC1790A-57F3-48C2-9CA8-0047F0FB1848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B49A3DE-539B-4B88-B20A-EB4EC2717241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B49A3DE-539B-4B88-B20A-EB4EC2717241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B49A3DE-539B-4B88-B20A-EB4EC2717241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B49A3DE-539B-4B88-B20A-EB4EC2717241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
