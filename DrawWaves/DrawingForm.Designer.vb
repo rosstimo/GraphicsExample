@@ -53,7 +53,7 @@ Partial Class DrawingForm
         Me.DrawingPictureBox.MinimumSize = New System.Drawing.Size(300, 300)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
         Me.DrawingPictureBox.Padding = New System.Windows.Forms.Padding(5)
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(475, 475)
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(325, 325)
         Me.DrawingPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.DrawingPictureBox.TabIndex = 0
         Me.DrawingPictureBox.TabStop = False
@@ -62,9 +62,9 @@ Partial Class DrawingForm
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LocationStatusLabel, Me.SeperatorStatusLabel, Me.ColorStatusLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(5, 557)
+        Me.StatusStrip1.Location = New System.Drawing.Point(5, 407)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(718, 32)
+        Me.StatusStrip1.Size = New System.Drawing.Size(568, 32)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -92,7 +92,7 @@ Partial Class DrawingForm
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2})
         Me.ToolStrip1.Location = New System.Drawing.Point(5, 5)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(718, 33)
+        Me.ToolStrip1.Size = New System.Drawing.Size(568, 33)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -117,7 +117,7 @@ Partial Class DrawingForm
         'DrawButton
         '
         Me.DrawButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DrawButton.Location = New System.Drawing.Point(530, 60)
+        Me.DrawButton.Location = New System.Drawing.Point(380, 60)
         Me.DrawButton.Name = "DrawButton"
         Me.DrawButton.Size = New System.Drawing.Size(170, 75)
         Me.DrawButton.TabIndex = 3
@@ -127,7 +127,7 @@ Partial Class DrawingForm
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(530, 141)
+        Me.Button2.Location = New System.Drawing.Point(380, 141)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(170, 75)
         Me.Button2.TabIndex = 4
@@ -137,7 +137,7 @@ Partial Class DrawingForm
         'Button3
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Location = New System.Drawing.Point(530, 222)
+        Me.Button3.Location = New System.Drawing.Point(380, 222)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(170, 75)
         Me.Button3.TabIndex = 5
@@ -147,7 +147,7 @@ Partial Class DrawingForm
         'Button4
         '
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Location = New System.Drawing.Point(530, 460)
+        Me.Button4.Location = New System.Drawing.Point(380, 310)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(170, 75)
         Me.Button4.TabIndex = 6
@@ -158,7 +158,7 @@ Partial Class DrawingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(728, 594)
+        Me.ClientSize = New System.Drawing.Size(578, 444)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -166,6 +166,7 @@ Partial Class DrawingForm
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.DrawingPictureBox)
+        Me.MinimumSize = New System.Drawing.Size(600, 500)
         Me.Name = "DrawingForm"
         Me.Padding = New System.Windows.Forms.Padding(5)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -65,30 +65,31 @@ Public Class DrawingForm
         'w = 360 * f
 
         Dim xCurrent As Double
-        Dim xMax As Single = 360
+        Dim xMax As Single = 360 'This will be the width of the scaled graphics object 
         Dim xOld As Double
         Dim xScale As Single = CSng(DrawingPictureBox.Width / xMax)
         Dim xOffset As Single
 
         Dim yCurrent As Double
-        Dim yMax As Single = 100
+        Dim yMax As Single = 100 'This will be the height of the scaled graphics object 
         Dim yOld As Double
-        Dim yScale As Single = CSng(((DrawingPictureBox.Height - 2) / 2) / yMax)
+        Dim yScale As Single = CSng(((DrawingPictureBox.Height) / 2) / yMax)
         Dim yOffset As Single = CSng(yMax)
 
-        Dim numberOfPoints As Integer = 180
+        Dim numberOfPoints As Integer = 360 'This will be the resolution of the drawn shape
         Dim xPerPoints As Integer = CInt(xMax / numberOfPoints)
 
-        For currentPoint = 0 To xMax Step xPerPoints
-            xCurrent = currentPoint '
-            yCurrent = yMax * Sin((PI / 180) * xCurrent)
-            'Console.WriteLine(vi)
 
-            DrawLine(CInt(xOld), CInt(yOld), CInt(xCurrent), CInt(yCurrent), xScale, yScale, xOffset, yOffset, 0)
+        For xCurrent = 0 To xMax Step xPerPoints
+            'xCurrent = currentPoint '
+            yCurrent = yMax * Sin((PI / 180) * xCurrent) * -1
+            Try
+                DrawLine(CInt(xOld), CInt(yOld), CInt(xCurrent), CInt(yCurrent), xScale, yScale, xOffset, yOffset, 0)
 
-            xOld = xCurrent
-            yOld = yCurrent
-
+                xOld = xCurrent
+                yOld = yCurrent
+            Catch
+            End Try
         Next
 
 

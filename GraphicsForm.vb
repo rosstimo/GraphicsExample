@@ -81,31 +81,29 @@ Public Class GraphicsForm
     End Sub
 
     Sub DrawSinWave()
-        'vi = vp * sin(w*t+theta)+DC
-        'w = 2 * PI * f
-        'w = 360 * f
-        Me.Width = 1000
-        DisplayPictureBox.Width = 720
-        Dim theta As Integer = 90I
-        Dim vi As Double
-        Dim vp As Double = (DisplayPictureBox.Height / 2) * -1
-        Dim oldVi As Double = DisplayPictureBox.Height / 2
-        Dim oldTheta As Integer
-        Dim pixelsPerDegree As Double = DisplayPictureBox.Width / 360
-        'DisplayPictureBox.Image = Nothing
-        Dim numberOfSteps As Double = DisplayPictureBox.Width / pixelsPerDegree
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Black)
 
-        For theta = 0 To CInt(numberOfSteps) Step CInt(pixelsPerDegree)
+        Dim xMax As Single = 100 ' 100 made up units wide
+        Dim xScale As Single = DisplayPictureBox.Width / xMax
+        Dim xCurrent As Double
 
-            vi = vp * Sin((PI / 180) * theta) + (DisplayPictureBox.Height / 2)
-            'Console.WriteLine(vi)
+        Dim yMax As Single = 100 ' 100 made up units high
+        Dim yScale As Single = CSng(DisplayPictureBox.Height / 2) / yMax
+        Dim yCurrent As Double
 
-            DrawLine(theta, oldTheta, CInt(vi), CInt(oldVi))
-            oldTheta = theta
-            oldVi = vi
+
+        g.ScaleTransform(xScale, yScale)
+        g.TranslateTransform(0, yMax)
+
+        For xCurrent = 0 To 100
+            yCurrent = yMax * Sin((PI / 180) * xCurrent)
+
+            g.DrawLine(pen, 0, 0, CInt(xCurrent), CInt(yCurrent))
 
         Next
-
+        pen.Dispose()
+        g.Dispose()
 
     End Sub
 
@@ -125,3 +123,23 @@ Public Class GraphicsForm
         DisplayPictureBox.BackColor = Color.LightBlue
     End Sub
 End Class
+'vi = vp * sin(w*t+theta)+DC
+'w = 2 * PI * f
+'w = 360 * f
+'Me.Width = 1000
+'DisplayPictureBox.Width = 720
+'Dim theta As Integer = 90I
+'Dim vi As Double
+'Dim vp As Double = (DisplayPictureBox.Height / 2) * -1
+'Dim oldVi As Double = DisplayPictureBox.Height / 2
+'Dim oldTheta As Integer
+'Dim pixelsPerDegree As Double = DisplayPictureBox.Width / 360
+''DisplayPictureBox.Image = Nothing
+'Dim numberOfSteps As Double = DisplayPictureBox.Width / pixelsPerDegree
+
+'For theta = 0 To CInt(numberOfSteps) Step CInt(pixelsPerDegree)
+'    vi = vp * Sin((PI / 180) * theta) + (DisplayPictureBox.Height / 2)
+'    'Console.WriteLine(vi)
+'    oldTheta = theta
+'    oldVi = vi
+'Next
