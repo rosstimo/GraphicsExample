@@ -5,18 +5,15 @@ Public Class DrawingForm
     Dim currentPosition As Point
     Dim currentColor As Color
 
-    Private Sub DrawingForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-
-    End Sub
 
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove
-        currentPosition = e.Location
+        Me.currentPosition = e.Location
         LocationStatusLabel.Text = $"(X:{e.X},Y:{e.Y})"
         ColorStatusLabel.Text = $"Color: {currentColor.Name} (A:{currentColor.A},R:{currentColor.R},G:{currentColor.G},B:{currentColor.B})"
     End Sub
 
     Private Sub DrawingForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        currentColor = Color.Black
+        Me.currentColor = Color.Black
     End Sub
 
     Sub Draw()
@@ -98,4 +95,6 @@ Public Class DrawingForm
     Private Sub DrawButton_Click(sender As Object, e As EventArgs) Handles DrawButton.Click
         DrawSinWave()
     End Sub
+
+
 End Class
