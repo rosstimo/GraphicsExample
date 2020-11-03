@@ -84,22 +84,30 @@ Public Class GraphicsForm
         Dim g As Graphics = DisplayPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black)
 
-        Dim xMax As Single = 100 ' 100 made up units wide
+        Dim xMax As Single = 360 ' 100 made up units wide
         Dim xScale As Single = DisplayPictureBox.Width / xMax
         Dim xCurrent As Double
+        Dim xOld As Double
 
-        Dim yMax As Single = 100 ' 100 made up units high
-        Dim yScale As Single = CSng(DisplayPictureBox.Height / 2) / yMax
+        Dim yMax As Single = 100 ' 100 made up units high 
+        Dim yScale As Single = CSng(DisplayPictureBox.Height / 2) / yMax * -1
         Dim yCurrent As Double
+        Dim yOld As Double
 
-
+        g.Clear(Color.LightBlue)
         g.ScaleTransform(xScale, yScale)
-        g.TranslateTransform(0, yMax)
+        g.TranslateTransform(0, yMax * -1)
 
-        For xCurrent = 0 To 100
+
+
+        For xCurrent = 0 To 360 Step 1
             yCurrent = yMax * Sin((PI / 180) * xCurrent)
 
-            g.DrawLine(pen, 0, 0, CInt(xCurrent), CInt(yCurrent))
+            g.DrawLine(pen, CInt(xOld), CInt(yOld), CInt(xCurrent), CInt(yCurrent))
+
+            xOld = xCurrent
+            yOld = yCurrent
+
 
         Next
         pen.Dispose()
@@ -119,8 +127,13 @@ Public Class GraphicsForm
 
     End Sub
 
-    Private Sub GraphicsForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub GraphicsForm_Load(sender As Object, e As EventArgs) Handles Me.Load, Me.Resize
         DisplayPictureBox.BackColor = Color.LightBlue
+        DrawSinWave()
+    End Sub
+
+    Private Sub DisplayPictureBox_Paint(sender As Object, e As PaintEventArgs) Handles DisplayPictureBox.Paint
+
     End Sub
 End Class
 'vi = vp * sin(w*t+theta)+DC

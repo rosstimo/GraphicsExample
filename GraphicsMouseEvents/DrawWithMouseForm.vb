@@ -1,10 +1,11 @@
-﻿Imports System.ComponentModel
+﻿Option Explicit On
+Option Strict On
+Imports System.ComponentModel
+
 Public Class DrawWithMouseForm
     Dim currentX As Integer
     Dim currentY As Integer
     Dim currentColor As Color
-
-    'Dim formGraphics As Graphics = Me.CreateGraphics
     Dim currentBrush As New SolidBrush(currentColor)
     Dim formPen As New Pen(currentBrush)
 
@@ -13,24 +14,22 @@ Public Class DrawWithMouseForm
         Me.currentX = e.X
         Me.currentY = e.Y
         If e.Button.ToString = "Left" Then
-            MouseDraw()
+            MouseDraw(True)
+        Else
+            MouseDraw(False)
         End If
-        'DrawVerticalCursor()
-        'DrawHorizontalCursor()
-        'DrawCircle()
     End Sub
 
     Private Sub DrawWithMouseForm_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
         Me.Text = $"Button: {e.Button} X:{e.X}, Y:{e.Y}"
-
         Select Case e.Button
             Case e.Button.Left
                 'MouseDraw()
             Case e.Button.Right
                 ColorDialog.ShowDialog()
-                currentColor = ColorDialog.Color
-                currentBrush.Color = currentColor
-                formPen.Brush = currentBrush
+                Me.currentColor = ColorDialog.Color
+                currentBrush.Color = Me.currentColor
+                formPen.Brush = Me.currentBrush
             Case e.Button.Middle
 
             Case Else
@@ -77,17 +76,15 @@ Public Class DrawWithMouseForm
         g.Dispose()
     End Sub
 
-    Sub MouseDraw()
+    Sub MouseDraw(ByRef draw As Boolean)
         Dim formGraphics As Graphics = Me.CreateGraphics
         Static lastX As Integer
         Static lastY As Integer
 
-        If lastX = 0 And lastY = 0 Then
-            lastX = Me.currentX
-            lastY = Me.currentY
+        If draw Then
+            formGraphics.DrawLine(formPen, lastX, lastY, Me.currentX, Me.currentY)
         End If
 
-        formGraphics.DrawLine(formPen, lastX, lastY, Me.currentX, Me.currentY)
         lastX = Me.currentX
         lastY = Me.currentY
         formGraphics.Dispose()
