@@ -4,6 +4,8 @@ Imports System.Math 'make math functions work
 Public Class GraphicsForm
 
 
+
+
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click, DisplayPictureBox.Click
         'test()
         'DrawSinWave()
@@ -12,7 +14,6 @@ Public Class GraphicsForm
         'DrawRectangle()
         DrawString()
     End Sub
-
 
     Sub DrawLine()
         'Constructor for an instance of a Graphics object called "g"
@@ -29,7 +30,7 @@ Public Class GraphicsForm
         g.Dispose()
     End Sub
 
-    Sub DrawLine(x1 As Integer, x2 As Integer, y1 As Integer, y2 As Integer)
+    Sub DrawLine(x1 As Integer, y1 As Integer, x2 As Integer, y2 As Integer)
         Dim g As Graphics = DisplayPictureBox.CreateGraphics
         Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
         g.DrawLine(pen, x1, y1, x2, y2)
@@ -70,6 +71,7 @@ Public Class GraphicsForm
 
         drawFont.Dispose()
         drawBrush.Dispose()
+        drawFormat.Dispose()
         g.Dispose()
     End Sub
 
@@ -133,4 +135,8 @@ Public Class GraphicsForm
         'DrawSinWave()
     End Sub
 
+    Private Sub DisplayPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DisplayPictureBox.MouseMove
+        Me.Text = $"({e.X},{e.Y}) Button:{e.Button}"
+        DrawLine(0, 0, e.X, e.Y)
+    End Sub
 End Class
