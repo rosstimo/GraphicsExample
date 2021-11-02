@@ -6,20 +6,25 @@ Public Class GraphicsForm
 
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click, DisplayPictureBox.Click
         'test()
-        DrawSinWave()
+        'DrawSinWave()
         'DrawLine()
         'DrawCircle()
         'DrawRectangle()
-        'DrawString()
+        DrawString()
     End Sub
 
 
-
-
     Sub DrawLine()
-        Dim g As Graphics = Me.CreateGraphics
-        Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
-        g.DrawLine(pen, 0, 0, 150, 50)
+        'Constructor for an instance of a Graphics object called "g"
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics 'Me.CreateGraphics
+
+        'Constructor for an instance of a Pen object to use with the graphics object
+        Dim pen As New Pen(Color.FromArgb(255, 0, 0, 255))
+        pen.Width() = 10
+        'actually draw a line with the defined pen from the origin (0,0) to (150,150) in pixels
+        g.DrawLine(pen, 20, 20, 150, 150)
+
+        'clean up, release all RAM/Resources
         pen.Dispose()
         g.Dispose()
     End Sub
@@ -33,21 +38,21 @@ Public Class GraphicsForm
     End Sub
 
     Sub DrawCircle()
-        Dim g As Graphics = Me.CreateGraphics
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Green)
-        g.DrawEllipse(pen, 20, 20, 100, 100)
+        g.DrawEllipse(pen, 20, 20, 100, 200)
         pen.Dispose()
         g.Dispose()
     End Sub
 
     Sub DrawRectangle()
-        Dim g As Graphics = Me.CreateGraphics
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics
         Dim aBrush As SolidBrush = New SolidBrush(Color.Blue)
-        Dim pen As New Pen(Color.Red)
-        g.FillRectangle(aBrush, 20, 20, 100, 100)
-        g.DrawRectangle(pen, 20, 20, 100, 100)
+        'Dim pen As New Pen(Color.Red)
+        g.FillRectangle(aBrush, 20, 20, 100, 200)
+        'g.DrawRectangle(pen, 20, 20, 100, 200)
         aBrush.Dispose()
-        pen.Dispose()
+        'pen.Dispose()
         g.Dispose()
     End Sub
 
@@ -56,7 +61,7 @@ Public Class GraphicsForm
         Dim x As Single = 150.0
         Dim y As Single = 50.0
 
-        Dim g As Graphics = Me.CreateGraphics()
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics()
         Dim drawFont As New Font("Arial", 16)
         Dim drawBrush As New SolidBrush(Color.Black)
         Dim drawFormat As New StringFormat '???
@@ -98,8 +103,6 @@ Public Class GraphicsForm
         g.ScaleTransform(xScale, yScale)
         g.TranslateTransform(0, yMax * -1)
 
-
-
         For xCurrent = 0 To 360 Step 1
             yCurrent = yMax * Sin((PI / 180) * xCurrent)
 
@@ -108,13 +111,11 @@ Public Class GraphicsForm
             xOld = xCurrent
             yOld = yCurrent
 
-
         Next
         pen.Dispose()
         g.Dispose()
 
     End Sub
-
 
     Sub test()
         Dim yMiddle As Integer = Me.Height \ 2
@@ -129,30 +130,7 @@ Public Class GraphicsForm
 
     Private Sub GraphicsForm_Load(sender As Object, e As EventArgs) Handles Me.Load, Me.Resize
         DisplayPictureBox.BackColor = Color.LightBlue
-        DrawSinWave()
+        'DrawSinWave()
     End Sub
 
-    Private Sub DisplayPictureBox_Paint(sender As Object, e As PaintEventArgs) Handles DisplayPictureBox.Paint
-
-    End Sub
 End Class
-'vi = vp * sin(w*t+theta)+DC
-'w = 2 * PI * f
-'w = 360 * f
-'Me.Width = 1000
-'DisplayPictureBox.Width = 720
-'Dim theta As Integer = 90I
-'Dim vi As Double
-'Dim vp As Double = (DisplayPictureBox.Height / 2) * -1
-'Dim oldVi As Double = DisplayPictureBox.Height / 2
-'Dim oldTheta As Integer
-'Dim pixelsPerDegree As Double = DisplayPictureBox.Width / 360
-''DisplayPictureBox.Image = Nothing
-'Dim numberOfSteps As Double = DisplayPictureBox.Width / pixelsPerDegree
-
-'For theta = 0 To CInt(numberOfSteps) Step CInt(pixelsPerDegree)
-'    vi = vp * Sin((PI / 180) * theta) + (DisplayPictureBox.Height / 2)
-'    'Console.WriteLine(vi)
-'    oldTheta = theta
-'    oldVi = vi
-'Next

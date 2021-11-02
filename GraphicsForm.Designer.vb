@@ -30,22 +30,24 @@ Partial Class GraphicsForm
         '
         Me.DisplayPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DisplayPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.DisplayPictureBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DisplayPictureBox.Name = "DisplayPictureBox"
-        Me.DisplayPictureBox.Size = New System.Drawing.Size(852, 564)
+        Me.DisplayPictureBox.Size = New System.Drawing.Size(568, 367)
         Me.DisplayPictureBox.TabIndex = 0
         Me.DisplayPictureBox.TabStop = False
         '
         'GraphicsForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(852, 564)
+        Me.ClientSize = New System.Drawing.Size(568, 367)
         Me.Controls.Add(Me.DisplayPictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "GraphicsForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "Graphics"
         CType(Me.DisplayPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
