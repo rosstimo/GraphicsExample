@@ -2,8 +2,11 @@
 Imports System.Math 'make math functions work
 
 Public Class GraphicsForm
-
-
+    'store (x,y) coordinates 
+    Dim x As Integer
+    Dim y As Integer
+    Dim penColor As Color = Color.Black
+    Dim backgroundColor As Color = Color.LightBlue
 
 
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click, DisplayPictureBox.Click
@@ -12,7 +15,7 @@ Public Class GraphicsForm
         'DrawLine()
         'DrawCircle()
         'DrawRectangle()
-        DrawString()
+        'DrawString()
     End Sub
 
     Sub DrawLine()
@@ -32,7 +35,7 @@ Public Class GraphicsForm
 
     Sub DrawLine(x1 As Integer, y1 As Integer, x2 As Integer, y2 As Integer)
         Dim g As Graphics = DisplayPictureBox.CreateGraphics
-        Dim pen As New Pen(Color.FromArgb(255, 0, 0, 0))
+        Dim pen As New Pen(Me.penColor) 'Pen(Color.FromArgb(255, 0, 0, 0))
         g.DrawLine(pen, x1, y1, x2, y2)
         pen.Dispose()
         g.Dispose()
@@ -131,12 +134,38 @@ Public Class GraphicsForm
     End Sub
 
     Private Sub GraphicsForm_Load(sender As Object, e As EventArgs) Handles Me.Load, Me.Resize
-        DisplayPictureBox.BackColor = Color.LightBlue
+        DisplayPictureBox.BackColor = Me.backgroundColor
         'DrawSinWave()
     End Sub
 
     Private Sub DisplayPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DisplayPictureBox.MouseMove
+        'update position
+
+        If e.Button.ToString = "Left" Then
+            DrawLine(Me.x, Me.y, e.X, e.Y)
+        End If
+
+        Me.x = e.X
+        Me.y = e.Y
         Me.Text = $"({e.X},{e.Y}) Button:{e.Button}"
-        DrawLine(0, 0, e.X, e.Y)
+
     End Sub
+
+    Private Sub DisplayPictureBox_MouseDown(sender As Object, e As MouseEventArgs) Handles DisplayPictureBox.MouseDown
+
+        If e.Button.ToString = "Right" Then
+            ColorDialog.ShowDialog()
+            Me.penColor = ColorDialog.Color
+        ElseIf e.Button.ToString = "Middle" Then
+            clear()
+        End If
+
+    End Sub
+
+    Sub clear()
+        Dim g As Graphics = DisplayPictureBox.CreateGraphics
+        g.Clear(Me.backgroundColor)
+        g.Dispose()
+    End Sub
+
 End Class

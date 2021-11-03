@@ -23,6 +23,7 @@ Partial Class GraphicsForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DisplayPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ColorDialog = New System.Windows.Forms.ColorDialog()
         CType(Me.DisplayPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -30,7 +31,7 @@ Partial Class GraphicsForm
         '
         Me.DisplayPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DisplayPictureBox.Location = New System.Drawing.Point(0, 0)
-        Me.DisplayPictureBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.DisplayPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.DisplayPictureBox.Name = "DisplayPictureBox"
         Me.DisplayPictureBox.Size = New System.Drawing.Size(568, 367)
         Me.DisplayPictureBox.TabIndex = 0
@@ -44,7 +45,7 @@ Partial Class GraphicsForm
         Me.ClientSize = New System.Drawing.Size(568, 367)
         Me.Controls.Add(Me.DisplayPictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "GraphicsForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Graphics"
@@ -54,4 +55,5 @@ Partial Class GraphicsForm
     End Sub
 
     Friend WithEvents DisplayPictureBox As PictureBox
+    Friend WithEvents ColorDialog As ColorDialog
 End Class
