@@ -1,4 +1,5 @@
 ﻿
+Imports System.ComponentModel
 Imports System.Math 'make math functions work
 
 Public Class GraphicsForm
@@ -7,7 +8,9 @@ Public Class GraphicsForm
     Dim y As Integer
     Dim penColor As Color = Color.Black
     Dim backgroundColor As Color = Color.LightBlue
-
+    Dim image As Image = New Bitmap(100, 100)
+    Dim g As Graphics = Graphics.FromImage(Me.image)
+    Dim pen As New Pen(Me.penColor) 'Pen(Color.FromArgb(255, 0, 0, 0))
 
     Private Sub GraphicsForm_Click(sender As Object, e As EventArgs) Handles Me.Click, DisplayPictureBox.Click
         'test()
@@ -34,11 +37,21 @@ Public Class GraphicsForm
     End Sub
 
     Sub DrawLine(x1 As Integer, y1 As Integer, x2 As Integer, y2 As Integer)
-        Dim g As Graphics = DisplayPictureBox.CreateGraphics
-        Dim pen As New Pen(Me.penColor) 'Pen(Color.FromArgb(255, 0, 0, 0))
-        g.DrawLine(pen, x1, y1, x2, y2)
-        pen.Dispose()
-        g.Dispose()
+        'Dim g As Graphics = DisplayPictureBox.CreateGraphics
+        'Dim image As Image = New Bitmap(DisplayPictureBox.Height, DisplayPictureBox.Width) 'New Bitmap(DisplayPictureBox.Width, DisplayPictureBox.Height)
+        'DisplayPictureBox.BackgroundImage = image
+        'image = DisplayPictureBox.BackgroundImage
+        'If DisplayPictureBox.BackgroundImage Is Nothing Then
+        '    DisplayPictureBox.BackgroundImage = image
+        'Else
+        '    image = DisplayPictureBox.BackgroundImage
+        'End If
+        'Dim g As Graphics = Graphics.FromImage(Me.image)
+        'Dim pen As New Pen(Me.penColor) 'Pen(Color.FromArgb(255, 0, 0, 0))
+        Me.g.DrawLine(Me.pen, x1, y1, x2, y2)
+        'pen.Dispose()
+        'g.Dispose()
+        DisplayPictureBox.BackgroundImage = Me.image
     End Sub
 
     Sub DrawCircle()
@@ -157,6 +170,7 @@ Public Class GraphicsForm
             ColorDialog.ShowDialog()
             Me.penColor = ColorDialog.Color
         ElseIf e.Button.ToString = "Middle" Then
+            save()
             clear()
         End If
 
@@ -164,8 +178,35 @@ Public Class GraphicsForm
 
     Sub clear()
         Dim g As Graphics = DisplayPictureBox.CreateGraphics
+        shake()
+
         g.Clear(Me.backgroundColor)
         g.Dispose()
     End Sub
 
+    Sub shake()
+        Dim offset As Integer = CInt(Math.Floor(Me.Width * 0.1))
+
+        ''https://freesound.org/
+        'Try
+        '    My.Computer.Audio.Play(My.Resources.shaker, AudioPlayMode.Background)
+        'Catch ex As Exception
+        'End Try
+
+        For var As Integer = 1 To 20
+            offset *= -1
+            Me.Top += offset
+            Me.Left += offset
+            System.Threading.Thread.Sleep(100)
+        Next
+    End Sub
+
+    Sub save()
+        'DisplayPictureBox.Image.Save("test.png")
+
+    End Sub
+
+    Private Sub DisplayPictureBox_LoadCompleted(sender As Object, e As AsyncCompletedEventArgs) Handles DisplayPictureBox.LoadCompleted
+        Me.image = New Bitmap(DisplayPictureBox.Height, DisplayPictureBox.Width)
+    End Sub
 End Class
