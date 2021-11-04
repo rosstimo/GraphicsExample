@@ -16,6 +16,7 @@ Public Class GraphicsForm
         'DrawCircle()
         'DrawRectangle()
         'DrawString()
+        shake()
     End Sub
 
     Sub DrawLine()
@@ -151,7 +152,7 @@ Public Class GraphicsForm
 
     End Sub
 
-    Private Sub DisplayPictureBox_MouseDown(sender As Object, e As MouseEventArgs) Handles DisplayPictureBox.MouseDown
+    Private Sub DisplayPictureBox_MouseDown(sender As Object, e As MouseEventArgs) 'Handles DisplayPictureBox.MouseDown
 
         If e.Button.ToString = "Right" Then
             ColorDialog.ShowDialog()
@@ -162,10 +163,44 @@ Public Class GraphicsForm
 
     End Sub
 
-    Sub clear()
+    Sub clear() Handles ClearToolStripMenuItem.Click
         Dim g As Graphics = DisplayPictureBox.CreateGraphics
         g.Clear(Me.backgroundColor)
         g.Dispose()
     End Sub
+
+    Private Sub PenColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenColorToolStripMenuItem.Click
+        ColorDialog.ShowDialog()
+        Me.penColor = ColorDialog.Color
+    End Sub
+
+    Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
+        ColorDialog.ShowDialog()
+        Me.backgroundColor = ColorDialog.Color
+        DisplayPictureBox.BackColor = Me.backgroundColor
+    End Sub
+
+    Sub shake()
+        'Me.Top
+        'Me.Left
+        Dim offset As Integer = 50
+
+        'https://freesound.org/
+        Try
+            My.Computer.Audio.Play(My.Resources.shaker, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+
+        For i = 1 To 20
+            'offset *= -1
+            offset = offset * -1
+            Me.Top += offset
+            Me.Left += offset
+            System.Threading.Thread.Sleep(100)
+        Next
+
+
+    End Sub
+
 
 End Class
