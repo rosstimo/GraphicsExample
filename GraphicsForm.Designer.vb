@@ -43,7 +43,7 @@ Partial Class GraphicsForm
         Me.DisplayPictureBox.Location = New System.Drawing.Point(11, 11)
         Me.DisplayPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.DisplayPictureBox.Name = "DisplayPictureBox"
-        Me.DisplayPictureBox.Size = New System.Drawing.Size(631, 432)
+        Me.DisplayPictureBox.Size = New System.Drawing.Size(662, 415)
         Me.DisplayPictureBox.TabIndex = 0
         Me.DisplayPictureBox.TabStop = False
         '
@@ -56,19 +56,19 @@ Partial Class GraphicsForm
         'PenColorToolStripMenuItem
         '
         Me.PenColorToolStripMenuItem.Name = "PenColorToolStripMenuItem"
-        Me.PenColorToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PenColorToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.PenColorToolStripMenuItem.Text = "Pen Color"
         '
         'BackgroundColorToolStripMenuItem
         '
         Me.BackgroundColorToolStripMenuItem.Name = "BackgroundColorToolStripMenuItem"
-        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.BackgroundColorToolStripMenuItem.Text = "Background Color"
         '
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.ClearToolStripMenuItem.Text = "Clear"
         '
         'GraphicsForm
@@ -76,9 +76,8 @@ Partial Class GraphicsForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(661, 559)
+        Me.ClientSize = New System.Drawing.Size(692, 542)
         Me.Controls.Add(Me.DisplayPictureBox)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "GraphicsForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
