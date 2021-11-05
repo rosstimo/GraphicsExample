@@ -40,10 +40,10 @@ Partial Class GraphicsForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DisplayPictureBox.ContextMenuStrip = Me.ContextMenuStrip
         Me.DisplayPictureBox.Cursor = System.Windows.Forms.Cursors.Cross
-        Me.DisplayPictureBox.Location = New System.Drawing.Point(11, 11)
+        Me.DisplayPictureBox.Location = New System.Drawing.Point(127, 123)
         Me.DisplayPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.DisplayPictureBox.Name = "DisplayPictureBox"
-        Me.DisplayPictureBox.Size = New System.Drawing.Size(662, 415)
+        Me.DisplayPictureBox.Size = New System.Drawing.Size(638, 439)
         Me.DisplayPictureBox.TabIndex = 0
         Me.DisplayPictureBox.TabStop = False
         '
@@ -76,7 +76,7 @@ Partial Class GraphicsForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(692, 542)
+        Me.ClientSize = New System.Drawing.Size(1148, 682)
         Me.Controls.Add(Me.DisplayPictureBox)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "GraphicsForm"

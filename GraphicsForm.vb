@@ -16,7 +16,9 @@ Public Class GraphicsForm
         'DrawCircle()
         'DrawRectangle()
         'DrawString()
-        shake()
+        'shake()
+        DrawDivisions()
+
     End Sub
 
     Sub DrawLine()
@@ -199,6 +201,34 @@ Public Class GraphicsForm
             System.Threading.Thread.Sleep(100)
         Next
 
+
+    End Sub
+
+    Sub DrawDivisions()
+        Dim xmid As Integer = DisplayPictureBox.Width \ 2
+        Dim ymid As Integer = DisplayPictureBox.Height \ 2
+
+        Dim xLast As Integer = xmid
+        Dim yLast As Integer = ymid
+        Dim xOffset As Integer = CInt(100 * Math.Cos((Math.PI / 180) * 135))
+        Dim yOffset As Integer = CInt(100 * Math.Sin((Math.PI / 180) * 135))
+
+        DrawLine(xmid, ymid, xmid + xOffset, ymid + yOffset)
+
+        For i = 0 To DisplayPictureBox.Height Step DisplayPictureBox.Height \ 8
+            DrawLine(0, i, DisplayPictureBox.Width, i)
+        Next
+        For i = 0 To DisplayPictureBox.Width Step DisplayPictureBox.Width \ 10
+            DrawLine(i, 0, i, DisplayPictureBox.Height)
+        Next
+
+
+        'For i = 1 To 10
+
+        '    DrawLine(xLast, yLast, xLast + offset, yLast)
+        '    xLast += offset
+        '    yLast += offset * CInt(Math.Sin(2))
+        'Next
 
     End Sub
 
